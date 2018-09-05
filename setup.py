@@ -18,10 +18,18 @@ install_requires = [
     'cffi>=1.0.0',
     'crcmod',
     'cryptography>=2.2',
-    'opencv-python',
     'pyee',
     'pylibsrtp>=0.5.6',
     'pyopenssl',
+]
+contrib_requires = [
+    'opencv-python',
+]
+examples_requires = [
+    'opencv-python',
+    'aiohttp',
+    'websockets',
+    'uvloop',
 ]
 
 if os.environ.get('READTHEDOCS') == 'True':
@@ -53,4 +61,8 @@ setuptools.setup(
     packages=['aiortc', 'aiortc.codecs', 'aiortc.contrib'],
     setup_requires=['cffi>=1.0.0'],
     install_requires=install_requires,
+    extras_require={
+        'contrib': contrib_requires,
+        'examples': examples_requires,
+    },
 )
